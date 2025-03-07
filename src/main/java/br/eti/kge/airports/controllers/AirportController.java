@@ -4,6 +4,7 @@
  */
 package br.eti.kge.airports.controllers;
 
+import br.eti.kge.airports.DTO.AirportMinDTO;
 import br.eti.kge.airports.entities.Airport;
 import br.eti.kge.airports.service.AirportService;
 import java.util.List;
@@ -29,10 +30,10 @@ public class AirportController {
      * @param cityName
      * @return
      */
-    @GetMapping("/city/{cityName}")
-    public ResponseEntity<List<Airport>> findByCityIgnoreCase(@PathVariable String cityName) {
-        List<Airport> result = airportService.findByCity(cityName);
+    @GetMapping("/country/{countryName}")
+    public ResponseEntity<List<AirportMinDTO>> findByCountryIgnoreCase(@PathVariable String countryName) {
         
+        List<AirportMinDTO> result = airportService.findByCountry(countryName);
         if (result.isEmpty()) {
             // Ops.. lista vazia..
             // notFound devolve 404
