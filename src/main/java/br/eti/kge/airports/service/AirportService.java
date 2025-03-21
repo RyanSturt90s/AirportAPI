@@ -23,16 +23,15 @@ public class AirportService {
     private AirportRepository airportRepository;
     /**
      * Retorna DTO Airports filtrado por cidade.
-     * @param city
+     * @param country
      * @return 
      */
     public List<AirportMinDTO> findByCountry(String country) {
         List<Airport> resultAirport = airportRepository.findByCountryIgnoreCase(country);
-        
+
         List<AirportMinDTO> resultDTO = resultAirport.stream()
                 .map(x -> new AirportMinDTO(x)).toList();
-        
+                
         return resultDTO;
     }
-    
 }
